@@ -1,0 +1,7 @@
+acces token: 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
+
+
+git remote set-url origin https://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@github.com/Bhargav2328/dockerstack.git
+
+
+git push -u origin master
