@@ -1,0 +1,29 @@
+---
+version: '3.8'
+services:
+  mydb:
+    image: postgres
+    deploy:
+      replicas: 2
+    environment:
+      POSTGRES_PASSWORD_FILE: run/secrets/my_pass
+      POSTGRES_USER_FILE: run/secrets/my_user
+      POSTGRES_DB_FILE: run/secrets/my_db
+    secrets:
+      - my_pass
+      - my_user
+      - my_db    
+  myadminer:
+    image: adminer
+    ports:
+      - 8989:8080
+    deploy:
+      replicas: 2
+secrets:
+  my_pass:
+    external: true
+  my_user:
+    external: true
+  my_db:
+    external: true
+...

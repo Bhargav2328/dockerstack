@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  myjenkins:
+    image: jenkins/jenkins
+    ports:
+      - 5050:8080
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.hostname == manager
+          - node.hostname != worker1
+          - node.hostname != worker2
+  qaserver:
+    image: tomee
+    ports:
+      - 6060:8080
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.hostname == worker1
+  prodserver:
+    image: tomee
+    ports:
+      - 7070:8080
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.hostname == worker2
+

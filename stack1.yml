@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mydb:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: sai
+    deploy:
+      replicas: 2
+  mypostgress:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: sai
+      POSTGRES_USER: sai
+      POSTGRES_DB: sql
+    deploy:
+      replicas: 2
